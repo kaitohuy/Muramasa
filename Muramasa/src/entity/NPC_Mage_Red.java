@@ -1,6 +1,5 @@
 package entity;
 
-import java.awt.Rectangle;
 import main.GamePanel;
 
 public class NPC_Mage_Red extends Entity{

@@ -18,11 +18,11 @@ public class OBJ_Shuriken extends Projectile{
 		this.gp = gp;
 		name = objName;
 		type = type_skill;
-		speed = 6;
+		speed = 10;
 		maxLife = 120;
 		life = maxLife;
-		attack = 15;
-		useCost = 1;
+		attack = 40;
+		useCost = 2;
 		knockBackPower = 5;
 		alive = false;
 		maxFrameAttack = 6;
@@ -32,10 +32,26 @@ public class OBJ_Shuriken extends Projectile{
 	public void getAttackImage(String level) {
 		
 		switch (level) {
-			case "lv0": levelShuriken = 0; break;
-			case "lv1": levelShuriken = 1; break;
-			case "lv2": levelShuriken = 2; break;
-			case "lv3": levelShuriken = 3; break;
+			case "lv0": {
+				levelShuriken = 0; 
+				attack = 40;
+				break;
+			}
+			case "lv1": {
+				levelShuriken = 1; 
+				attack = 40 + gp.player.currentWeapon.attack;
+				break;
+			}
+			case "lv2": {
+				levelShuriken = 2;
+				attack = 50 + gp.player.currentWeapon.attack;
+				break;
+			}
+			case "lv3": {
+				levelShuriken = 3; 
+				attack = 100 + gp.player.currentWeapon.attack;
+				break;
+			}
 		}
 		
 	    for (int i = 0; i < maxFrameAttack; i++) {
@@ -59,7 +75,7 @@ public class OBJ_Shuriken extends Projectile{
 	}
 	
 	public void subtractResource(Entity user) {
-		//user.mana -= useCost;
+		user.mana -= useCost;
 	}
 	
 	public Color getParticleColor() {

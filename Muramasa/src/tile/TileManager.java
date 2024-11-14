@@ -2,7 +2,6 @@ package tile;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,9 +66,9 @@ public class TileManager {
 		else if(gp.currentMap == 1) {
 			setUp(0, "0000", false);
 			setUp(1, "0001", true);
-			setUp(2, "0002", true);
+			setUp(2, "0002", false);
 			setUp(3, "0003", true);
-			setUp(4, "0004", true);
+			setUp(4, "0004", false);
 			setUp(5, "0005", true);
 			setUp(6, "0006", true);
 			setUp(7, "0007", true);
@@ -410,18 +409,18 @@ public class TileManager {
 			}
 		}
 		
-		if(drawPath == true) {
-			g2.setColor(new Color(255, 0, 0, 70));
-			
-			for(int i = 0; i < gp.pFinder.pathList.size(); i++) {
-				
-				int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
-				int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
-				int screenX = worldX - gp.player.worldX + gp.player.screenX;
-				int screenY = worldY - gp.player.worldY + gp.player.screenY;
-				
-				g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
-			}
-		}
+//		if(drawPath == true) {
+//			g2.setColor(new Color(255, 0, 0, 70));
+//			
+//			for(int i = 0; i < gp.pFinder.pathList.size(); i++) {
+//				
+//				int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
+//				int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
+//				int screenX = worldX - gp.player.worldX + gp.player.screenX;
+//				int screenY = worldY - gp.player.worldY + gp.player.screenY;
+//				
+//				g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
+//			}
+//		}
 	}
 }

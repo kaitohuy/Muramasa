@@ -16,14 +16,14 @@ public class OBJ_Posion_Blue extends Entity{
 		
 		eWidth = gp.tileSize;
 		eHeight = gp.tileSize;
-		value = 5;
+		value = 2;
 		type = type_consumable;
 		name = objName;
 		down1 = setup("/objects/posion_blue", gp.tileSize, gp.tileSize);
 		defenseValue = 1;
 		description = "[" + name + "]\nHồi phục " + value + " điểm năng\nlượng.";
 		
-		price = 5;
+		price = 20;
 		stackable = true;	
 
 	}
@@ -31,6 +31,7 @@ public class OBJ_Posion_Blue extends Entity{
 	public boolean use(Entity entity) {
 		
 		gp.gameState = gp.playState;
+		value = gp.player.maxMana/5;
 		entity.mana += value;
 		if(gp.player.mana > gp.player.maxMana) {
 			gp.player.mana = gp.player.maxMana;

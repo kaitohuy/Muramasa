@@ -7,11 +7,7 @@ import data.Progress;
 import entity.Entity;
 import entity.NPC_Mage;
 import main.GamePanel;
-import object.OBJ_Coin;
-import object.OBJ_Diamond;
 import object.OBJ_Portal;
-import object.OBJ_Posion_Blue;
-import object.OBJ_Posion_Red;
 
 public class MON_Ishigami extends Entity{
 
@@ -40,11 +36,11 @@ public class MON_Ishigami extends Entity{
 		direction = "right";
 		defaultSpeed = 2;
 		speed = defaultSpeed;
-		maxLife = 1800;
+		maxLife = 10000;
 		life = maxLife;
-		attack = 15;
-		defense = 10;
-		exp = 50;
+		attack = 230;
+		defense = 30;
+		exp = 1000000;
 		knockBackPower = 10;
 		maxFrameAttack = 19;
 		frameDelay = 6;
@@ -205,7 +201,8 @@ public class MON_Ishigami extends Entity{
 			frameDelay = 2;
 			numRange = 6;
 			speed = 3;
-			attack *= 2;
+			attack += 20;
+			defense += 20;
 			nextSkill = 0;
 			skillSummonCounter = 0;
 			setDefaultSolidArea(144, 0, 96, 144, 90, 90);

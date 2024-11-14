@@ -1,8 +1,6 @@
 package object;
 
 import java.awt.Color;
-
-import entity.Entity;
 import entity.Projectile;
 import main.GamePanel;
 
@@ -20,10 +18,10 @@ public class OBJ_Grass_Bullet extends Projectile{
 		eWidth = gp.tileSize;
 		eHeight = gp.tileSize;
 		name = objName;
-		speed = 5;
+		speed = 6;
 		maxLife = 160;
 		life = maxLife;
-		attack = 2;
+		attack = 20;
 		useCost = 1;
 		alive = false;
 		getImage();

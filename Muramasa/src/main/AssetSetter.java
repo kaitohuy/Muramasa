@@ -324,7 +324,7 @@ import object.*;
 			}
 			case 1: {
 				npcIndex = 0;
-				setUpNPC(NPC_Griffon.class, 10, 30);
+				setUpNPC(NPC_Griffon.class, 1, 32);
 				break;
 			}
 			case 2: {

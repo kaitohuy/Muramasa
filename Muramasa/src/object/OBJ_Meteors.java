@@ -20,7 +20,7 @@ public class OBJ_Meteors extends Projectile{
 		maxLife = 90;
 		life = maxLife;
 		attack = 20;
-		useCost = 2;
+		useCost = 12;
 		knockBackPower = 5;
 		maxFrameAttack = 6;
 		alive = false;

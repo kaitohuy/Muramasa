@@ -1,10 +1,7 @@
 package object;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
-import entity.Entity;
 import entity.Projectile;
 import main.GamePanel;
 
@@ -18,10 +15,10 @@ public class OBJ_Fire_Storm extends Projectile{
 		super(gp);
 		this.gp = gp;
 		name = objName;
-		speed = 4;
+		speed = 5;
 		maxLife = 240;
 		life = maxLife;
-		attack = 10;
+		attack = 20;
 		useCost = 1;
 		knockBackPower = 5;
 		alive = false;

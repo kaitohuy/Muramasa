@@ -86,7 +86,8 @@ public class MON_Dragon extends Entity{
 			getImage();			
 			defaultSpeed++;
 			speed = defaultSpeed;
-			attack *= 2;
+			attack += 20;
+			defense += 10;
 		}
 		
 		if(life <= 0) {

@@ -16,14 +16,14 @@ public class OBJ_Posion_Red extends Entity{
 		
 		eWidth = gp.tileSize;
 		eHeight = gp.tileSize;
-		value = 5;
+		value = 10;
 		type = type_consumable;
 		name = objName;
 		down1 = setup("/objects/posion_red", gp.tileSize, gp.tileSize);
 		defenseValue = 1;
 		description = "[" + name + "]\nHồi phục " + value + " điểm sinh mệnh.";
 
-		price = 5;
+		price = 20;
 		stackable = true;
 
 	}
@@ -31,6 +31,7 @@ public class OBJ_Posion_Red extends Entity{
 	public boolean use(Entity entity) {
 		
 		gp.gameState = gp.playState;
+		value = gp.player.maxLife/5;
 		entity.life += value;
 		if(gp.player.life > gp.player.maxLife) {
 			gp.player.life = gp.player.maxLife;

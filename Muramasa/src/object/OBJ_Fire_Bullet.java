@@ -22,7 +22,7 @@ public class OBJ_Fire_Bullet extends Projectile{
 		speed = 5;
 		maxLife = 160;
 		life = maxLife;
-		attack = 2;
+		attack = 30;
 		useCost = 1;
 		alive = false;
 		getImage();

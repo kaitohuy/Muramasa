@@ -5,7 +5,6 @@ import object.OBJ_Armor_Lv0;
 import object.OBJ_Armor_Lv1;
 import object.OBJ_Armor_Lv2;
 import object.OBJ_Armor_Lv3;
-import object.OBJ_BigTree;
 import object.OBJ_Bone;
 import object.OBJ_Chest;
 import object.OBJ_Coin;

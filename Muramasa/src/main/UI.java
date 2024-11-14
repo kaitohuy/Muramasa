@@ -90,13 +90,11 @@ public class UI {
 		return null;
 	}
 	
-	
 	public void addMessage(String text) {
 		
 		message.add(text);
 		messageCounter.add(0);
 	}
-	
 	
 	public void draw(Graphics2D g2) {
 		
@@ -166,7 +164,6 @@ public class UI {
 		}
 	}
 
-	
 	private void drawSummonState() {
 		if (soundSummon == false) {
 			soundSummon = true;
@@ -232,7 +229,6 @@ public class UI {
 	     
 	}
 
-	
 	public void drawMonsterLife() {
 		
 		for(int i = 0; i < gp.monster[gp.currentMap].length; i++) {
@@ -278,8 +274,7 @@ public class UI {
 		}
 		 
 	}
-	
-	
+		
 	public void drawTitleScreen() {
 		// TODO Auto-generated method stub
 		
@@ -342,14 +337,14 @@ public class UI {
 			g2.setColor(Color.white);
 			g2.setFont(g2.getFont().deriveFont(42f));
 			
-			String text = "Select your class!";
+			String text = "Select Level!";
 			int x = getXForCenteredText(text);
 			int y = gp.tileSize*3;
 			int sublength = (int)g2.getFontMetrics().getStringBounds("<", g2).getWidth();
 			int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 			g2.drawString(text, x, y);
 			
-			text = "Fighter";
+			text = "Easy";
 			x = getXForCenteredText(text);
 			y += gp.tileSize*3;
 			length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
@@ -359,7 +354,7 @@ public class UI {
 				g2.drawString("<", x + gp.tileSize + length - sublength , y);
 			}
 			
-			text = "Thief";
+			text = "Medium";
 			x = getXForCenteredText(text);
 			y += gp.tileSize;
 			length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
@@ -369,7 +364,7 @@ public class UI {
 				g2.drawString("<", x + gp.tileSize + length - sublength , y);
 			}
 			
-			text = "Sorcerer";
+			text = "Hard";
 			x = getXForCenteredText(text);
 			y += gp.tileSize;
 			length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
@@ -379,20 +374,28 @@ public class UI {
 				g2.drawString("<", x + gp.tileSize + length - sublength , y);
 			}
 		
-			text = "Back";
+			text = "Asian";
 			x = getXForCenteredText(text);
-			y += gp.tileSize*2;
+			y += gp.tileSize;
 			length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 			g2.drawString(text, x, y);
 			if(commandNum == 3) {
 				g2.drawString(">", x - gp.tileSize, y);
 				g2.drawString("<", x + gp.tileSize + length - sublength , y);
 			}
+			
+			text = "Back";
+			x = getXForCenteredText(text);
+			y += gp.tileSize*2;
+			length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+			g2.drawString(text, x, y);
+			if(commandNum == 4) {
+				g2.drawString(">", x - gp.tileSize, y);
+				g2.drawString("<", x + gp.tileSize + length - sublength , y);
+			}
 		}
-		 
 	}
 
-	
 	public void drawIncantation(String currentDialogue) {
 		//window
 		int x = gp.tileSize * 3;
@@ -413,7 +416,6 @@ public class UI {
 		}
 		 
 	}
-	
 	
 	public void drawMessage() {
 		// TODO Auto-generated method stub
@@ -443,7 +445,6 @@ public class UI {
 		}
 	}
 		
-	
 	public void drawDialogueScreen() {
 
 		//window
@@ -531,7 +532,6 @@ public class UI {
 		}
 		 
 	}
-	
 	
 	private void drawCharacterScreen() {
 		// TODO Auto-generated method stub
@@ -643,7 +643,6 @@ public class UI {
 		//g2.drawImage(gp.player.currentShield.down1, tailX - gp.tileSize, textY - 30, null);
 		 
 	}
-	
 	
 	private void drawSkill(Entity entity) {
 	    int frameX = gp.tileSize * 7 + 24;
@@ -889,7 +888,6 @@ public class UI {
 		 
 	}	
 	
-	
 	public void drawGameOverScreen() {
 		
 		g2.setColor(new Color(0,0,0,150));
@@ -938,7 +936,6 @@ public class UI {
 		 
 	}	
 	
-	
 	public void drawOptionScreen() {
 		
 		g2.setColor(Color.white);
@@ -969,7 +966,6 @@ public class UI {
 		gp.keyH.enterPressed = false;
 		 
 	}	
-	
 	
 	public void options_top(int frameX, int frameY) {
 		
@@ -1105,7 +1101,6 @@ public class UI {
 		}
 	}
 	
-	
 	public void options_controls(int frameX, int frameY) {
 		
 		int textX;
@@ -1164,13 +1159,12 @@ public class UI {
 		}
 	}	
 	
-	
 	public void options_endGameConfirm(int frameX, int frameY) {
 		
 		int textX = frameX + gp.tileSize;
 		int textY = frameY + gp.tileSize*3;
 		
-		currentDialogue = "Quit the game and return \nto the title screen?";
+		currentDialogue = "Thoát game và trở về màn\nhình chính (tự động lưu)?";
 		for(String line: currentDialogue.split("\n")) {
 			g2.drawString(line, textX, textY);
 			textY += 40;
@@ -1187,7 +1181,8 @@ public class UI {
 				subState = 0;
 				gp.gameState = gp.titleState;
 				titleScreenState = 0;
-				gp.resetGame(true);
+				gp.saveLoad.reset();
+				gp.saveLoad.save();
 			}
 		}
 		
@@ -1204,7 +1199,6 @@ public class UI {
 		}
 	}
 	
-	
 	private void drawTransition() {
 		// TODO Auto-generated method stub
 		counter++;
@@ -1220,7 +1214,6 @@ public class UI {
 		  
 	}	
 	
-	
 	private void drawTradeScreen() {
 		// TODO Auto-generated method stub
 		switch(subState) {
@@ -1231,7 +1224,6 @@ public class UI {
 		gp.keyH.tradeKeyPressed = false;
 		  
 	}	
-	
 	
 	public void trade_select() {
 		
@@ -1277,7 +1269,6 @@ public class UI {
 		y += gp.tileSize;
 	}
 
-	
 	public void trade_buy() {
 		
 		//draw player inventory
@@ -1337,7 +1328,6 @@ public class UI {
 			}
 		}
 	}	
-	
 	
 	public void trade_sell() {
 		
@@ -1401,7 +1391,6 @@ public class UI {
 		}
 	}
 	
-	
 	public void drawSleepScreen() {
 		
 		counter++;
@@ -1426,11 +1415,9 @@ public class UI {
 		 
 	}
 
-	
 	public int getItemIndexSlot(int slotCol, int slotRow) {
 		return slotCol + (slotRow*numberSlotX);
 	}
-	
 	
 	public void drawSubWindow(int x, int y, int width, int height) {
 		
@@ -1445,7 +1432,6 @@ public class UI {
 		 
 	}
 
-	
 	public void drawPauseScreen() {
 		
 		g2.setFont(VT323.deriveFont(108f));
@@ -1456,15 +1442,13 @@ public class UI {
 		g2.drawString(text, x, y);
 		 
 	}
-	
-	
+
 	public int getXForCenteredText(String text) {
 		
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 		int x = gp.screenWidth/2 - length/2;
 		return x;
 	}
-	
 	
 	public int getXForRightText(String text, int tailX) {
 		

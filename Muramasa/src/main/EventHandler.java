@@ -18,7 +18,7 @@ public class EventHandler{
 	boolean canTouchEvent = true;
 	boolean trapRock = false;
 	boolean trapSpike = false, trapSpikeArrow = false;
-	int tempMap, tempCol, tempRow;
+	int tempMap, nextMap, tempCol, tempRow;
 	private boolean endDialogueMap1 = false, endDialogueMap2 = false, endDialogueMap3 = false, endDialogueMap35 = false, endDialogueMap4 = false, endDialogueMap45 = false, endGriffon = false;
 	
 	public EventHandler(GamePanel gp) {
@@ -252,7 +252,8 @@ public class EventHandler{
 	public void teleport(int map, int col, int row, int area, String direction) {
 		gp.gameState = gp.transitionState;
 		gp.nextArea = area;
-		tempMap = map;
+		nextMap = map;
+		tempMap = gp.currentMap;
 		tempCol = col;
 		tempRow = row;
 		gp.player.direction = direction;

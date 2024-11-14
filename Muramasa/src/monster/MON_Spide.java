@@ -24,11 +24,11 @@ public class MON_Spide extends Entity{
 		eHeight = gp.tileSize*2;
 		defaultSpeed = 1;
 		speed = defaultSpeed;
-		maxLife = 50;
+		maxLife = 3000;
 		life = maxLife;
-		attack = 15;
-		defense = 0;
-		exp = 5;
+		attack = 190;
+		defense = 25;
+		exp = 50000;
 		projectile = new OBJ_Poison_Bullet(gp);
 
 		setDefaultSolidArea(18, 16, 48, 48, 64, 64);

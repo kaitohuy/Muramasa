@@ -5,7 +5,6 @@ import java.util.Random;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Coin;
-import object.OBJ_Diamond;
 
 import object.OBJ_Posion_Blue;
 import object.OBJ_Posion_Red;
@@ -25,11 +24,11 @@ public class MON_Bat extends Entity{
 		eHeight = (int)(gp.tileSize*1.5);
 		defaultSpeed = 2;
 		speed = defaultSpeed;
-		maxLife = 50;
+		maxLife = 1000;
 		life = maxLife;
-		attack = 7;
-		defense = 0;
-		exp = 2;
+		attack = 150;
+		defense = 10;
+		exp = 10000;
 
 		setDefaultSolidArea(18, 12, 32, 32, 64, 64);
 		getImage();

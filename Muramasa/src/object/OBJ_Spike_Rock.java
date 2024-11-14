@@ -19,7 +19,7 @@ public class OBJ_Spike_Rock extends Projectile{
 		speed = 10;
 		maxLife = 180;
 		life = maxLife;
-		attack = 100;
+		attack = 200;
 		useCost = 1;
 		knockBackPower = 5;
 		maxFrameAttack = 8;

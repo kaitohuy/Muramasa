@@ -51,6 +51,7 @@ public class Player extends Entity {
 		maxMana = 10;
 		mana = maxMana;
 		strength = 5;
+		intitalDefense = 5;
 		exp = 0;
 		nextLevelExp = 20;
 		coin = 100;
@@ -82,6 +83,33 @@ public class Player extends Entity {
 	}
 	
 	public void restoreStatus() {
+		switch (gp.currentMap){
+			case 1: {
+				worldX = gp.tileSize * 3;
+				worldY = gp.tileSize * 32;
+				direction = "right";
+				break;
+			}
+			case 2: {
+				worldX = gp.tileSize * 25;
+				worldY = gp.tileSize * 46;
+				direction = "up";
+				break;
+			}
+			case 3: {
+				worldX = gp.tileSize * 24;
+				worldY = gp.tileSize * 48;
+				direction = "up";
+				break;
+			}
+			case 4: {
+				worldX = gp.tileSize * 42;
+				worldY = gp.tileSize * 48;
+				direction = "up";
+				break;
+			}
+		}
+	
 		life = maxLife;
 		mana = maxMana;
 		speed = defaultSpeed;
@@ -122,9 +150,9 @@ public class Player extends Entity {
 	public int getDefenseArmor() {
 		// TODO Auto-generated method stub
 		if (currentArmor == null) {
-			return 0;
+			return intitalDefense;
 		}
-		return defense = currentArmor.defenseValue;
+		return defense = intitalDefense + currentArmor.defenseValue;
 	}
 
 	public int getAttack() {
@@ -420,11 +448,11 @@ public class Player extends Entity {
 		}
 		
 //		
-//		if(life <= 0) {
-//			gp.stopMusic();
-//			gp.gameState = gp.gameOverState;
-//			gp.playSe(12);
-//		}
+		if(life <= 0) {
+			gp.stopMusic();
+			gp.gameState = gp.gameOverState;
+			gp.playSe(12);
+		}
 	}
 
 	public void pickUpObject(int i) {
@@ -477,8 +505,8 @@ public class Player extends Entity {
 				if(invincible == false && gp.monster[gp.currentMap][monsterIndex.get(i)].dying == false) {
 					gp.playSe(6);
 					int damage  = gp.monster[gp.currentMap][monsterIndex.get(i)].attack - defense;
-					if(damage < 1) {
-						damage = 1;
+					if(damage < 0) {
+						damage = 0;
 					}
 					if(life < 0) {
 						life = 0;
@@ -560,6 +588,7 @@ public class Player extends Entity {
 			maxMana += 5;
 			mana += 2;
 			strength += 5;
+			intitalDefense += 5;
 			
 			attack = getAttack();
 			defense = getDefenseArmor();
@@ -572,18 +601,20 @@ public class Player extends Entity {
 							gp.projectile[gp.currentMap][i].attack += 5;
 							gp.projectile[gp.currentMap][i].useCost = gp.player.maxMana/10;
 						}
-						case "meteors": {
-							gp.projectile[gp.currentMap][i].attack += 10;
-							gp.projectile[gp.currentMap][i].useCost = gp.player.maxMana/5;
-						}
 						case "util": {
-							gp.projectile[gp.currentMap][i].attack += 15;
+							gp.projectile[gp.currentMap][i].attack += 10;
+							gp.projectile[gp.currentMap][i].useCost = gp.player.maxMana/3;
+						}
+						case "meteors": {
+							gp.projectile[gp.currentMap][i].attack += 50;
 							gp.projectile[gp.currentMap][i].useCost = gp.player.maxMana/3;
 						}
 					}
 				}
 			}
 			
+			
+
 			gp.playSe(8);	
 			setDialogue();
 			startDialogue(this, 0);

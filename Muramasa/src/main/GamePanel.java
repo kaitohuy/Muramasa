@@ -8,15 +8,10 @@ import animation.Thunder;
 import data.Progress;
 import data.SaveLoad;
 import entity.Entity;
+import entity.Bridge;
 import entity.Player;
 import enviroment.EnviromentManager;
 import object.OBJ_BigTree;
-import object.OBJ_Bridge_Horizontal;
-import object.OBJ_Bridge_Snow;
-import object.OBJ_Bridge_Vertical;
-import object.OBJ_Stair;
-import object.OBJ_Tree_Snow_1;
-import object.OBJ_Tree_Snow_2;
 import tile.Map;
 import tile.TileManager;
 
@@ -68,6 +63,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 	
 	//system
+	public String level = "";
 	public Map map = new Map(this);
 	public TileManager tileM = new TileManager(this);
 	public KeyHandler keyH = new KeyHandler(this);
@@ -147,8 +143,11 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	
 	public void changeAttribute() {
-		currentMap = eHandler.tempMap;
+		currentMap = eHandler.nextMap;
+		int previousMap = eHandler.tempMap;
 		changeArea();
+		saveLoad.reset();
+		saveLoad.save();
 		
 		/*tile*/
 		tileM.instantiate();
@@ -169,7 +168,7 @@ public class GamePanel extends JPanel implements Runnable{
 				break;
 			}
 			case 2: {
-				if(Progress.zombieWinterDefeated == false) {
+				if(Progress.zombieWinterDefeated == false && previousMap != 5) {
 					setWorld = true;
 				}
 				break;
@@ -233,24 +232,19 @@ public class GamePanel extends JPanel implements Runnable{
 		
 	}
 	
-	public void resetGame(boolean restart) {
+	public void resetGame() {
 		
 		stopMusic();
-		currentArea = indoor;
 		removeTempEntity();
 		dragonBattleOn = false;
 		ishigamiBattleOn = false;
-		player.setDefaultValues();
+		saveLoad.load();
 		player.restoreStatus();
 		player.resetCounter();
 		aSetter.setNPC();
 		aSetter.setMonster();
-		
-		if(restart == true) {
-			player.setDefaultValues();
-			aSetter.setObject();	
-			eManage.lighting.resetDay();
-		}
+		aSetter.setObject();	
+		eManage.lighting.resetDay();
 	}
  	
 	public void setFullScreen() {
@@ -459,25 +453,16 @@ public class GamePanel extends JPanel implements Runnable{
 			    @Override
 			    public int compare(Entity e1, Entity e2) {
 			        // Check if e1 is a Player and e2 is a Tree
-			        if (e1 instanceof Player && e2 instanceof OBJ_BigTree) {
+			        if (e1 instanceof Entity && e2 instanceof OBJ_BigTree) {
 			            // Player should appear below the tree branches but above the trunk base
 			            return Integer.compare(e1.worldY, e2.worldY + tileSize * 2);
 			        }
 
 			        // Check if e1 is a Player and e2 is a bridge or stair
-			        if (e1 instanceof Player && 
-			            (e2 instanceof OBJ_Bridge_Snow || e2 instanceof OBJ_Bridge_Horizontal || 
-			             e2 instanceof OBJ_Bridge_Vertical || e2 instanceof OBJ_Stair)) {
+			        if (e1 instanceof Entity && 
+			            (e2 instanceof Bridge)) {
 			            // Player should be rendered on top of bridges and stairs
 			            return 1;
-			        }
-			        
-			        // Check if e2 is a Tree and e1 is a bridge/stair object
-			        if ((e1 instanceof OBJ_Bridge_Snow || e1 instanceof OBJ_Bridge_Horizontal || 
-			             e1 instanceof OBJ_Bridge_Vertical || e1 instanceof OBJ_Stair) && 
-			            e2 instanceof OBJ_BigTree) {
-			            // Bridges/Stairs should appear below trees
-			            return -1;
 			        }
 			        
 			        // Default comparison based on worldY for all other entities

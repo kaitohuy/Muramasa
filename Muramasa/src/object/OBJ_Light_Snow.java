@@ -1,8 +1,5 @@
 package object;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
 import java.awt.image.BufferedImage;
 
 import entity.Entity;

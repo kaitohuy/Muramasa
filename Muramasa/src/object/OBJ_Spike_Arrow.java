@@ -1,8 +1,6 @@
 package object;
 
 import java.awt.Color;
-
-import entity.Entity;
 import entity.Projectile;
 import main.GamePanel;
 
@@ -20,10 +18,10 @@ public class OBJ_Spike_Arrow extends Projectile{
 		eWidth = gp.tileSize*12;
 		eHeight = gp.tileSize*3;
 		name = objName;
-		speed = 5;
+		speed = 4;
 		maxLife = 120;
 		life = maxLife;
-		attack = 100;
+		attack = 250;
 		useCost = 1;
 		alive = false;
 		getImage();

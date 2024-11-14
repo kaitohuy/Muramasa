@@ -5,7 +5,6 @@ import java.util.Random;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Coin;
-import object.OBJ_Diamond;
 import object.OBJ_Posion_Blue;
 import object.OBJ_Posion_Red;
 
@@ -24,11 +23,11 @@ public class MON_Eye extends Entity{
 		eHeight = (int)(gp.tileSize*1.5);
 		defaultSpeed = 2;
 		speed = defaultSpeed;
-		maxLife = 50;
+		maxLife = 2000;
 		life = maxLife;
-		attack = 10;
-		defense = 5;
-		exp = 20;
+		attack = 170;
+		defense = 20;
+		exp = 20000;
 		knockBackPower = 5;
 		numOfDirecion = 2;
 		
@@ -36,7 +35,7 @@ public class MON_Eye extends Entity{
 		getImage();
 	}
 	
-public void getImage() {
+	public void getImage() {
 		
 		up1 = setup("/monster/eye_up_1", eWidth, eHeight);
 		up2 = setup("/monster/eye_up_2", eWidth, eHeight);

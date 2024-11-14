@@ -16,10 +16,10 @@ public class OBJ_Util extends Projectile{
 		name = objName;
 		type = type_skill;
 		speed = 0;
-		maxLife = 120;
+		maxLife = 90;
 		life = maxLife;
 		attack = 30;
-		useCost = 5;
+		useCost = 10;
 		knockBackPower = 5;
 		alive = false;
 		maxFrameAttack = 28;
@@ -52,7 +52,7 @@ public class OBJ_Util extends Projectile{
 	}
 	
 	public void subtractResource(Entity user) {
-		//user.mana -= useCost;
+		user.mana -= useCost;
 	}
 	
 }

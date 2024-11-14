@@ -85,11 +85,12 @@ public class KeyHandler implements KeyListener {
 				gp.playSe(9);
 				
 				if(gp.ui.commandNum == 0) {
+//					gp.saveLoad.reset();
 					gp.ui.titleScreenState = 1;
 				}
 				
 				if(gp.ui.commandNum == 1) {
-					gp.saveLoad.load();
+//					gp.saveLoad.load();
 					gp.gameState = gp.playState;
 					gp.playMusic(23);
 				}
@@ -105,14 +106,14 @@ public class KeyHandler implements KeyListener {
 				gp.ui.commandNum--;
 				gp.playSe(9);
 				if(gp.ui.commandNum < 0) {
-					gp.ui.commandNum = 3;
+					gp.ui.commandNum = 4;
 				}
 			}
 			
 			if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
 				gp.ui.commandNum++;
 				gp.playSe(9);
-				if(gp.ui.commandNum > 3) {
+				if(gp.ui.commandNum > 4) {
 					gp.ui.commandNum = 0;
 				}
 			}
@@ -122,6 +123,7 @@ public class KeyHandler implements KeyListener {
 				if(gp.ui.commandNum == 0) {
 					gp.stopMusic();
 					gp.gameState = gp.playState;
+					gp.level = "easy";
 					gp.playMusic(23);
 					gp.ui.commandNum = 0;
 				}
@@ -131,6 +133,7 @@ public class KeyHandler implements KeyListener {
 					gp.stopMusic();
 					gp.playMusic(23);
 					gp.gameState = gp.playState;
+					gp.level = "medium";
 					gp.ui.commandNum = 0;
 				}
 				
@@ -139,10 +142,20 @@ public class KeyHandler implements KeyListener {
 					gp.stopMusic();
 					gp.playMusic(23);
 					gp.gameState = gp.playState;
+					gp.level = "hard";
 					gp.ui.commandNum = 0;
 				}
 				
 				if(gp.ui.commandNum == 3) {
+					//later
+					gp.stopMusic();
+					gp.playMusic(23);
+					gp.gameState = gp.playState;
+					gp.level = "asian";
+					gp.ui.commandNum = 0;
+				}
+				
+				if(gp.ui.commandNum == 4) {
 					gp.ui.titleScreenState = 0;
 					gp.ui.commandNum = 0;
 				}
@@ -321,14 +334,14 @@ public class KeyHandler implements KeyListener {
 		}
 		if(code == KeyEvent.VK_ENTER) {
 			if(gp.ui.commandNum == 0) {
+				gp.saveLoad.load();
 				gp.gameState = gp.playState;
-				gp.resetGame(false);
+				gp.resetGame();
 				gp.playMusic(23);
 			}else {
 				gp.gameState = gp.titleState;
 				gp.ui.titleScreenState = 0;
 				gp.ui.commandNum = 0;
-				gp.resetGame(true);
 			}
 		}
 	}

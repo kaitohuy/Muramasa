@@ -30,7 +30,7 @@ public class Projectile extends Entity{
 			List<Integer> monsterIndex  = gp.cChecker.checkEntity(this, gp.monster);
 			if(!monsterIndex.isEmpty()) {
 				for(int i = 0; i < monsterIndex.size(); i++) {
-					gp.player.damageMonster(monsterIndex, this, attack * (gp.player.level), knockBackPower);
+					gp.player.damageMonster(monsterIndex, this, attack, knockBackPower);
 					if(!name.equals("util")) {
 						generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex.get(i)]);
 					}

@@ -95,6 +95,7 @@ public class Entity {
 	public int attack;
 	public int maxMana;
 	public int mana;
+	public int intitalDefense;
 	public int defense;
 	public int exp;
 	public int nextLevelExp;
@@ -751,9 +752,11 @@ public class Entity {
 		gp.playSe(5);
 		int damage  = attack - gp.player.defense;
 		
-		if(damage != 0) {
+		if(damage > 0) {
 			gp.player.transparent = true;
 			setKnockBack(gp.player, this, knockBackPower);
+		}else {
+			damage = 0;
 		}
 		
 		gp.player.life -= damage;
@@ -1005,12 +1008,12 @@ public class Entity {
 			}
 		}
 		
-		g2.setColor(Color.red);
-		g2.drawRect(tempScreenX + solidAreaDefaultX, tempScreenY + solidAreaDefaultY, solidArea.width, solidArea.height);
-		g2.setColor(Color.green);
-		if(image != null) {
-			g2.drawRect(tempScreenX, tempScreenY, image.getWidth(), image.getHeight());
-		}
+//		g2.setColor(Color.red);
+//		g2.drawRect(tempScreenX + solidAreaDefaultX, tempScreenY + solidAreaDefaultY, solidArea.width, solidArea.height);
+//		g2.setColor(Color.green);
+//		if(image != null) {
+//			g2.drawRect(tempScreenX, tempScreenY, image.getWidth(), image.getHeight());
+//		}
 	}
 
 	protected void dyingAnimation(Graphics2D g2) {

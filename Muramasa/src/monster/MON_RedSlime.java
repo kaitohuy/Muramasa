@@ -5,11 +5,9 @@ import java.util.Random;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Coin;
-import object.OBJ_Diamond;
 import object.OBJ_Fire_Bullet;
 import object.OBJ_Posion_Blue;
 import object.OBJ_Posion_Red;
-import object.OBJ_Grass_Bullet;
 
 public class MON_RedSlime extends Entity{
 
@@ -26,7 +24,7 @@ public class MON_RedSlime extends Entity{
 		speed = defaultSpeed;
 		maxLife = 100;
 		life = maxLife;
-		attack = 30;
+		attack = 25;
 		defense = 0;
 		exp = 10;
 		projectile = new OBJ_Fire_Bullet(gp);

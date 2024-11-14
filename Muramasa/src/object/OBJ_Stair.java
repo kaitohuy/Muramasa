@@ -1,9 +1,9 @@
 package object;
 
-import entity.Entity;
+import entity.Bridge;
 import main.GamePanel;
 
-public class OBJ_Stair extends Entity{
+public class OBJ_Stair extends Bridge{
 
 	public static final String objName = "stair";
 	
