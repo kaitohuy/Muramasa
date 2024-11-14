@@ -1,0 +1,1 @@
+web: java -cp "bin:postgresql-42.7.4.jar" Main
